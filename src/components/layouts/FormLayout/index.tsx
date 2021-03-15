@@ -54,7 +54,7 @@ function getPreviusPage(router: NextRouter): string {
   return router.route.substring(0, router.route.lastIndexOf('/'));
 }
 
-export default function FormLayout ({ children, title, buttonSubmitText, buttonCancelText, formIsValid }: Props) {
+export default function FormLayout ({ children, title, buttonSubmitText, buttonCancelText }: Props) {
   const classes = useStyles();
 
   const router = useRouter();

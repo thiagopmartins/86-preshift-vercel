@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -20,7 +20,7 @@ import {
   Theme,
   Typography,
 } from "@material-ui/core";
-import { Controller, useForm, useWatch } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -73,11 +73,11 @@ interface TabPanelProps {
   value: any;
 }
 
-type MenuTypes = {
-  id: string;
-  name: string;
-  isActive: boolean;
-};
+// type MenuTypes = {
+//   id: string;
+//   name: string;
+//   isActive: boolean;
+// };
 
 type MenuInput = {
   name: string;
@@ -147,11 +147,10 @@ export default function CreateMenu() {
 
   const [open, setOpen] = useState(false);
 
-  const [headerText, setValueHeaderText] = useState("");
+  // const [headerText, setValueHeaderText] = useState("");
 
   const {
     control,
-    errors: fieldsErrors,
     handleSubmit,
     getValues,
   } = useForm<MenuInput>();
@@ -186,11 +185,11 @@ export default function CreateMenu() {
     setOpen(false);
   };
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
 
-  const handleChangeText = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChangeText = (_event: React.ChangeEvent<{}>, newValue: number) => {
     setValueText(newValue);
   };
 
@@ -256,7 +255,7 @@ export default function CreateMenu() {
                     <Controller
                       control={control}
                       name={`menuType.${id}`}
-                      render={({ onChange, onBlur, value, ref }) => (
+                      render={({ onChange, value }) => (
                         <FormControlLabel
                           key={index}
                           control={
@@ -340,7 +339,7 @@ export default function CreateMenu() {
                 }
                 control={control}
                 rules={{ required: "This is required" }}
-                defaultValue={headerText}                          
+                defaultValue=""                         
               />
             </TabPanel>
 
